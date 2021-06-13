@@ -7,6 +7,7 @@ const server = mc.createServer({
 	encryption: true,
 	host: '0.0.0.0',
 	port: 25565,
+	favicon: process.env.SERVER_FAVICON_BASE64 || '',
 	motd: process.env.SERVER_MOTD || '§3Quickplay Authentication Server',
 	beforePing: function(response, client) {
 		// Always allow the version the client is using
@@ -18,9 +19,6 @@ const server = mc.createServer({
 	}
 })
 
-if (process.env.SERVER_FAVICON_BASE64) {
-	server.favicon = process.env.SERVER_FAVICON_BASE64
-}
 let kickMessage = "§7Your authentication code:\n§f§l%code%"
 if (process.env.SERVER_KICK_MESSAGE) {
 	kickMessage = process.env.SERVER_KICK_MESSAGE
