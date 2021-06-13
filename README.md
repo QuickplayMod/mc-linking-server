@@ -5,7 +5,7 @@ input separately to authenticate themselves. These codes get added to a database
 ## Database Schema
 Uses a MySQL database.
 
-###mc_auth_codes
+### mc_auth_codes
 
 | Rows      | Type definition                     |
 |-----------|-------------------------------------|
@@ -13,7 +13,7 @@ Uses a MySQL database.
 | account   | int                                 |
 | timestamp | timestamp default CURRENT_TIMESTAMP |
 
-###accounts
+### accounts
 | Rows        | Type definition                     |
 |-------------|-------------------------------------|
 | id          | int AUTO_INCREMENT primary key      |
