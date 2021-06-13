@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    volumes:
+      - ../db-volume:/var/lib/mysql
+    env_file:
+      - docker-db.env
+    ports:
+      - "3306:3306"
+  mc-server:
+    image: quickplaymod/quickplay-mc-linking-server
+    depends_on:
+      - db
+    ports:
+      - "25565:25565"
+      - "5861:5861"
+    restart: unless-stopped
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
+    env_file:
+      - .env
